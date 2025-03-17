@@ -1,0 +1,19 @@
+services:
+  webapp:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    networks:
+      - db-network
+
+volumes:
+  db-data:
+
+networks:
+  db-network:
+    driver: bridge
